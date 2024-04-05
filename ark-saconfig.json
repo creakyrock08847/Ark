@@ -133,7 +133,7 @@
         "InputType":"number",
         "MinValue":"1",
         "ParamFieldName":"MaxPlayers",
-        "DefaultValue":"70",
+        "DefaultValue":"10",
         "Placeholder":"70",
         "Suffix":"players",
         "EnumValues":{}  
