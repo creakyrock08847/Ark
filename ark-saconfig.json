@@ -7,7 +7,7 @@
         "FieldName":"SessionName",
         "InputType":"text",
         "ParamFieldName":"SessionSettings.SessionName",
-        "DefaultValue":"AMP Powered ARK: Survival Ascended Server",
+        "DefaultValue":"Thebigyeet.net Hosted Server",
         "EnumValues":{}
     },
     {
@@ -125,44 +125,6 @@
         "EnumValues":{}
     },
     {
-        "DisplayName":"Enable Player Whitelist",
-        "Category":"ARK Server Settings",
-        "Description":"If set, only players with EOS IDs listed under Whitelisted Players or Whitelisted Players Above Limit can join the server",
-        "Keywords":"player,whitelist,exclusivejoin",
-        "FieldName":"exclusivejoin",
-        "InputType":"checkbox",
-        "ParamFieldName":"exclusivejoin",
-        "DefaultValue":"",
-        "EnumValues":{
-            "False":"",
-            "True":"-exclusivejoin "
-        }
-    },
-    {
-        "DisplayName":"Whitelisted Players",
-        "Category":"ARK Server Settings",
-        "Description":"List of EOS IDs for normal whitelisted players",
-        "Keywords":"player,whitelist,playersexclusivejoinlist",
-        "FieldName":"PlayerWhitelist",
-        "InputType":"list",
-        "ParamFieldName":"PlayerWhitelist",
-        "DefaultValue":"",
-        "Special":"listfile:./ark-sa/2430930/ShooterGame/Binaries/Win64/PlayersExclusiveJoinList.txt",
-        "EnumValues":{}
-    },
-    {
-        "DisplayName":"Whitelisted Players Above Limit",
-        "Category":"ARK Server Settings",
-        "Description":"List of EOS IDs for whitelisted players who can join the server even if the number of player slots is exhausted",
-        "Keywords":"player,whitelist,above,limit,PlayersJoinNoCheckList",
-        "FieldName":"PlayerWhitelistAboveLimit",
-        "InputType":"list",
-        "ParamFieldName":"PlayerWhitelistAboveLimit",
-        "DefaultValue":"",
-        "Special":"listfile:./ark-sa/2430930/ShooterGame/Binaries/Win64/PlayersJoinNoCheckList.txt",
-        "EnumValues":{}
-    },
-    {
         "DisplayName":"Player Limit",
         "Category":"ARK Server Settings",
         "Description":"Sets the maximum number of players allowed on the server",
@@ -194,7 +156,7 @@
         "FieldName":"BattlEye",
         "InputType":"checkbox",
         "ParamFieldName":"BattlEye",
-        "DefaultValue":"-NoBattlEye ",
+        "DefaultValue":"",
         "EnumValues":{
             "False":"",
             "True":"-NoBattlEye "
@@ -208,10 +170,37 @@
         "FieldName":"ServerPlatform",
         "InputType":"text",
         "ParamFieldName":"ServerPlatform",
-        "DefaultValue":"PC",
-        "Placeholder":"PC",
+        "DefaultValue":"ALL",
+        "Placeholder":"ALL",
         "Required":true,
         "EnumValues":{}
+    },
+    {
+        "DisplayName":"Banlist URL",
+        "Category":"ARK Server Settings",
+        "Description":"Sets a banlist to disallow access to the server to specified players (identified by Steam64 ID). Use either the global banlist of ARK, or a custom banlist URL",
+        "Keywords":"ban,banlist,blacklist,banlisturl",
+        "FieldName":"BanListURL",
+        "InputType":"text",
+        "ParamFieldName":"ServerSettings.BanListURL",
+        "DefaultValue":"http://arkdedicated.com/banlist.txt",
+        "Placeholder":"http://arkdedicated.com/banlist.txt",
+        "EnumValues":{}
+    },
+    {
+        "DisplayName":"Enable Admin Logging In Chat",
+        "Category":"ARK Server Settings",
+        "Description":"If set, all admin commands used will be logged to in-game chat",
+        "Keywords":"admin,log,chat,adminlogging",
+        "FieldName":"AdminLogging",
+        "InputType":"checkbox",
+        "ParamFieldName":"AdminLogging",
+        "IncludeInCommandLine":true,
+        "DefaultValue":"False",
+        "EnumValues":{
+            "False":"False",
+            "True":"True"
+        }
     },
     {
         "DisplayName":"Kick Idle Players",
@@ -226,6 +215,37 @@
             "False":"",
             "True":"-EnableIdlePlayerKick "
         }
+    },
+    {
+        "DisplayName":"Kick Idle Players Period",
+        "Category":"ARK Server Settings",
+        "Description":"Sets the time period after which characters that have not moved or interacted will be kicked (if Kick Idle Players is enabled)",
+        "Keywords":"kick,idle,players,period,kickidleplayersperiod",
+        "FieldName":"KickIdlePlayersPeriod",
+        "InputType":"number",
+        "MinValue":"1",
+        "ParamFieldName":"KickIdlePlayersPeriod",
+        "IncludeInCommandLine":true,
+        "DefaultValue":"3600",
+        "Placeholder":"3600",
+        "Suffix":"seconds",
+        "EnumValues":{}
+    },
+    {
+        "DisplayName":"Auto Save Period",
+        "Category":"ARK Server Settings",
+        "Description":"Sets the interval for automatic saves. 0 = constant saving, 9000000 = effectively disabled",
+        "Keywords":"auto,save,period,minutes,autosaveperiodminutes",
+        "FieldName":"AutoSavePeriodMinutes",
+        "InputType":"number",
+        "MinValue":"0",
+        "MaxValue":"9000000",
+        "ParamFieldName":"AutoSavePeriodMinutes",
+        "IncludeInCommandLine":true,
+        "DefaultValue":"15.0",
+        "Placeholder":"15.0",
+        "Suffix":"minutes",
+        "EnumValues":{}
     },
     {
         "DisplayName":"Disable Hang Detection",
@@ -278,44 +298,6 @@
         }
     },
     {
-        "DisplayName":"Allow Cave Flyers",
-        "Category":"ARK Server Settings",
-        "Description":"If set, flyers will always be allowed into caves (flyers are able to go into caves by default on custom maps)",
-        "Keywords":"allow,cave,flyers,forceallowcaveflyers",
-        "FieldName":"ForceAllowCaveFlyers",
-        "InputType":"checkbox",
-        "ParamFieldName":"ForceAllowCaveFlyers",
-        "DefaultValue":"",
-        "EnumValues":{
-            "False":"",
-            "True":"-ForceAllowCaveFlyers "
-        }
-    },
-    {
-        "DisplayName":"Custom Command Line Flags",
-        "Category":"ARK Server Settings",
-        "Description":"Sets custom [command line flags](https://ark.wiki.gg/wiki/Server_configuration_(Survival_Ascended%29) for the server (those that start with a - (dash)). Include the dash and separate with a space. Don't use flags already in AMP's settings!",
-        "Keywords":"custom,command,line,flags",
-        "FieldName":"CustomFlags",
-        "InputType":"text",
-        "ParamFieldName":"CustomFlags",
-        "DefaultValue":"",
-        "Placeholder":"-UseItemDupeCheck -UseSecureSpawnRules",
-        "EnumValues":{}
-    },
-    {
-        "DisplayName":"Custom Command Line Options",
-        "Category":"ARK Server Settings",
-        "Description":"Sets custom [command line options](https://ark.wiki.gg/wiki/Server_configuration_(Survival_Ascended%29) for the server (those that start with a ? (question mark)). Include the question mark but do not separate with a space. Don't use options already in AMP's settings!",
-        "Keywords":"custom,command,line,options",
-        "FieldName":"CustomOptions",
-        "InputType":"text",
-        "ParamFieldName":"CustomOptions",
-        "DefaultValue":"",
-        "Placeholder":"?ClampItemStats=True?NewYear1UTC=1672592400",
-        "EnumValues":{}
-    },
-    {
         "DisplayName":"Cluster Directory Override",
         "Category":"ARK Cluster Settings",
         "Description":"Sets the path to a shared cluster directory for a server cluster. The cluster directory must be accessible to all cluster servers. If the server is in Docker, the directory must be mounted in the container",
@@ -342,128 +324,115 @@
         "EnumValues":{}
     },
     {
-        "DisplayName":"Filter Transfers",
+        "DisplayName":"Prevent Character Download",
         "Category":"ARK Cluster Settings",
-        "Description":"If set, prevents ARK data usage between single player and servers that do not have a Cluster ID set. Even with a Cluster ID set, it is suggested to enable this option",
-        "Keywords":"filter,data,transfer,notransferfromfiltering",
-        "FieldName":"NoTransferFromFiltering",
+        "Description":"If set, prevents the download of characters from a cluster to the server",
+        "Keywords":"prevent,download,tribute,characters,data,transfer,cluster,notributedownloads",
+        "FieldName":"noTributeDownloads",
         "InputType":"checkbox",
-        "ParamFieldName":"NoTransferFromFiltering",
-        "DefaultValue":"",
+        "IsFlagArgument":false,
+        "ParamFieldName":"noTributeDownloads",
+        "IncludeInCommandLine":true,
+        "DefaultValue":"False",
         "EnumValues":{
-            "False":"",
-            "True":"-NoTransferFromFiltering "
+            "False":"False",
+            "True":"True"
         }
     },
     {
-        "DisplayName":"Disable Custom Cosmetic system",
-        "Category":"ARK Cosmetic Settings",
-        "Description":"If set, Custom Cosmetics will be disabled on your server",
-        "Keywords":"customcosmetic,custom,cosmetic,DisableCustomCosmetics",
-        "FieldName":"DisableCustomCosmetics",
+        "DisplayName":"Prevent Survivor Download",
+        "Category":"ARK Cluster Settings",
+        "Description":"If set, prevents the download of survivors from a cluster to the server",
+        "Keywords":"prevent,download,survivor,data,transfer,cluster,preventdownloadsurvivors",
+        "FieldName":"PreventDownloadSurvivors",
         "InputType":"checkbox",
-        "ParamFieldName":"DisableCustomCosmetics",
-        "DefaultValue":"",
+        "IsFlagArgument":false,
+        "ParamFieldName":"PreventDownloadSurvivors",
+        "IncludeInCommandLine":true,
+        "DefaultValue":"False",
         "EnumValues":{
-            "False":"",
-            "True":"-DisableCustomCosmetics "
+            "False":"False",
+            "True":"True"
         }
     },
     {
-        "DisplayName":"Disable Wild Creature Spawn",
-        "Category":"ARK Gameplay Settings",
-        "Description":"If set, wild creatures will not be spawned in the server. For an existing server, existing creatures need to be wiped with the admin command \"destroywilddinos\"",
-        "Keywords":"no,creatures,spawn,nodinos",
-        "FieldName":"nodinos",
+        "DisplayName":"Prevent Item Download",
+        "Category":"ARK Cluster Settings",
+        "Description":"If set, prevents the download of items from a cluster to the server",
+        "Keywords":"prevent,download,items,data,transfer,cluster,preventdownloaditems",
+        "FieldName":"PreventDownloadItems",
         "InputType":"checkbox",
-        "ParamFieldName":"nodinos",
-        "DefaultValue":"",
+        "IsFlagArgument":false,
+        "ParamFieldName":"PreventDownloadItems",
+        "IncludeInCommandLine":true,
+        "DefaultValue":"False",
         "EnumValues":{
-            "False":"",
-            "True":"-nodinos "
+            "False":"False",
+            "True":"True"
         }
     },
     {
-        "DisplayName":"Force Wild Creature Respawn On Start",
-        "Category":"ARK Gameplay Settings",
-        "Description":"If set, all wild creatures that are not currently tamed will be destroyed on server start",
-        "Keywords":"force,creature,respawn,forcerespawndinos",
-        "FieldName":"ForceRespawnDinos",
+        "DisplayName":"Prevent Creature Download",
+        "Category":"ARK Cluster Settings",
+        "Description":"If set, prevents the download of tamed creatures from a cluster to the server",
+        "Keywords":"prevent,download,creatures,data,transfer,cluster,preventdownloaddinos",
+        "FieldName":"PreventDownloadDinos",
         "InputType":"checkbox",
-        "ParamFieldName":"ForceRespawnDinos",
-        "DefaultValue":"",
+        "IsFlagArgument":false,
+        "ParamFieldName":"PreventDownloadDinos",
+        "IncludeInCommandLine":true,
+        "DefaultValue":"False",
         "EnumValues":{
-            "False":"",
-            "True":"-ForceRespawnDinos "
+            "False":"False",
+            "True":"True"
         }
     },
     {
-        "DisplayName":"Disable Tek Railgun",
-        "Category":"ARK Gameplay Settings",
-        "Description":"If set, the Tek Railgun will be disabled in PvP mode",
-        "Keywords":"disable,tek,railgun,disablerailgunpvp",
-        "FieldName":"DisableRailgunPVP",
+        "DisplayName":"Prevent Survivor Upload",
+        "Category":"ARK Cluster Settings",
+        "Description":"If set, prevents the upload of survivors from the server to a cluster",
+        "Keywords":"prevent,upload,survivor,data,transfer,cluster,preventuploadsurvivors",
+        "FieldName":"PreventUploadSurvivors",
         "InputType":"checkbox",
-        "ParamFieldName":"DisableRailgunPVP",
-        "DefaultValue":"",
+        "IsFlagArgument":false,
+        "ParamFieldName":"PreventUploadSurvivors",
+        "IncludeInCommandLine":true,
+        "DefaultValue":"False",
         "EnumValues":{
-            "False":"",
-            "True":"-DisableRailgunPVP "
+            "False":"False",
+            "True":"True"
         }
     },
     {
-        "DisplayName":"Enable Structure Stasis Grid",
-        "Category":"ARK Structure Settings",
-        "Description":"If set, enables the structure stasis grid to improve server performance on large bases with lots of players. Structures are loaded based on grids with players. Not recommended for modded servers",
-        "Keywords":"structure,stasis,grid,usestructurestasisgrid",
-        "FieldName":"UseStructureStasisGrid",
+        "DisplayName":"Prevent Item Upload",
+        "Category":"ARK Cluster Settings",
+        "Description":"If set, prevents the upload of items from the server to a cluster",
+        "Keywords":"prevent,upload,items,data,transfer,cluster,preventuploaditems",
+        "FieldName":"PreventUploadItems",
         "InputType":"checkbox",
-        "ParamFieldName":"UseStructureStasisGrid",
-        "DefaultValue":"",
+        "IsFlagArgument":false,
+        "ParamFieldName":"PreventUploadItems",
+        "IncludeInCommandLine":true,
+        "DefaultValue":"False",
         "EnumValues":{
-            "False":"",
-            "True":"-UseStructureStasisGrid "
+            "False":"False",
+            "True":"True"
         }
     },
     {
-        "DisplayName":"Proton GE Release",
-        "Category":"SteamCMD and Updates",
-        "Description":"Sets the Proton GE release build to install. If \"Specific version\" is selected, the version must be set under Specific Proton GE Release Version. Update the server after changing this setting",
-        "Keywords":"proton,release,latest,specific",
-        "FieldName":"ProtonRelease",
-        "InputType":"enum",
-        "ParamFieldName":"ProtonRelease",
-        "DefaultValue":"latest",
+        "DisplayName":"Prevent Creature Upload",
+        "Category":"ARK Cluster Settings",
+        "Description":"If set, prevents the upload of tamed creatures from the server to a cluster",
+        "Keywords":"prevent,upload,creatures,data,transfer,cluster,preventuploaddinos",
+        "FieldName":"PreventUploadDinos",
+        "InputType":"checkbox",
+        "IsFlagArgument":false,
+        "ParamFieldName":"PreventUploadDinos",
+        "IncludeInCommandLine":true,
+        "DefaultValue":"False",
         "EnumValues":{
-            "latest":"Latest (default)",
-            "specificversion":"Specific version"
-        }
-    },
-    {
-        "DisplayName":"Specific Proton GE Release Version",
-        "Category":"SteamCMD and Updates",
-        "Description":"Sets the [release version](https://github.com/GloriousEggroll/proton-ge-custom/releases) for a specific Proton GE release build to install, if \"Specific version\" is selected under Proton GE Release. Example: GE-Proton9-1",
-        "Keywords":"proton,release,specific,version",
-        "FieldName":"SpecificReleaseVersion",
-        "InputType":"text",
-        "ParamFieldName":"SpecificReleaseVersion",
-        "DefaultValue":"",
-        "Placeholder":"GE-Proton9-1",
-        "EnumValues":{}
-    },
-    {
-        "DisplayName":"Server Executable",
-        "Category":"SteamCMD and Updates",
-        "Description":"Sets whether to run the vanilla server or the [ServerAPI launcher](https://github.com/ArkServerApi/AsaApi). NOTE: Update the server after selecting the ServerAPI launcher",
-        "Keywords":"serverapi,api,launcher,vanilla",
-        "FieldName":"ServerExecutable",
-        "InputType":"enum",
-        "ParamFieldName":"ServerExecutable",
-        "IncludeInCommandLine":false,
-        "DefaultValue":"ArkAscendedServer",
-        "EnumValues":{
-            "ArkAscendedServer":"Vanilla server (default)",
-            "AsaApiLoader":"ServerAPI launcher"
+            "False":"False",
+            "True":"True"
         }
     },
     {
