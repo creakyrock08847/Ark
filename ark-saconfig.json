@@ -7,7 +7,7 @@
         "FieldName":"SessionName",
         "InputType":"text",
         "ParamFieldName":"SessionSettings.SessionName",
-        "DefaultValue":"Thebigyeet.net Hosted Server",
+        "DefaultValue":"CreakyTest",
         "EnumValues":{}
     },
     {
