@@ -1,0 +1,453 @@
+[
+    {
+        "DisplayName":"Server Name",
+        "Category":"ARK Server Settings",
+        "Description":"Set the name of the server as it appears publicly",
+        "Keywords":"server,name,sessionname",
+        "FieldName":"SessionName",
+        "InputType":"text",
+        "ParamFieldName":"SessionSettings.SessionName",
+        "DefaultValue":"Thebigyeet.net Hosted Server",
+        "EnumValues":{}
+    },
+    {
+        "DisplayName":"MOTD",
+        "Category":"ARK Server Settings",
+        "Description":"Sets the player welcome message (MOTD)",
+        "Keywords":"motd,welcome,message",
+        "FieldName":"MOTDMessage",
+        "InputType":"text",
+        "ParamFieldName":"MessageOfTheDay.Message",
+        "DefaultValue":"Welcome to ARK!",
+        "EnumValues":{}
+    },
+    {
+        "DisplayName":"MOTD Duration",
+        "Category":"ARK Server Settings",
+        "Description":"Sets the time period for display of the MOTD",
+        "Keywords":"motd,message,period,duration",
+        "FieldName":"MOTDDuration",
+        "InputType":"number",
+        "ParamFieldName":"MessageOfTheDay.Duration",
+        "DefaultValue":"20",
+        "Placeholder":"20",
+        "Suffix":"seconds",
+        "EnumValues":{}
+    },
+    {
+        "DisplayName":"Map",
+        "Category":"ARK Server Settings",
+        "Description":"Sets the map for the server. If Custom is selected, Custom Map Name must also be set",
+        "Keywords":"map",
+        "FieldName":"Map",
+        "InputType":"enum",
+        "ParamFieldName":"Map",
+        "DefaultValue":"TheIsland_WP",
+        "EnumValues":{
+            "TheIsland_WP":"The Island (default)",
+            "ScorchedEarth_WP":"Scorched Earth",
+            "{{CustomMap}}":"--Custom--"
+        }
+    },
+    {
+        "DisplayName":"Custom Map Name",
+        "Category":"ARK Server Settings",
+        "Description":"Sets a custom map for the server. \"Custom\" type must be selected under Map, and the CurseForge Project ID for the map included under Mods List",
+        "Keywords":"custom,map",
+        "FieldName":"CustomMap",
+        "InputType":"text",
+        "ParamFieldName":"CustomMap",
+        "DefaultValue":"",
+        "Placeholder":"Svartalfheim_WP",
+        "EnumValues":{}
+    },
+    {
+        "DisplayName":"Use Mods",
+        "Category":"ARK Server Settings",
+        "Description":"If set, enables automatic mod downloading, updating and loading (on server start). Specify the relevant mods under Mods List. Don't enable this setting if no mods are specified under Mods List or the server will not start",
+        "Keywords":"auto,managed,mods",
+        "FieldName":"mods",
+        "InputType":"checkbox",
+        "ParamFieldName":"mods",
+        "DefaultValue":"",
+        "EnumValues":{
+            "False":"",
+            "True":"-mods={{modslist}} "
+        }
+    },
+    {
+        "DisplayName":"Mods List",
+        "Category":"ARK Server Settings",
+        "Description":"Comma-separated and ordered list of [CurseForge Project IDs](https://www.curseforge.com/ark-survival-ascended) for mods (including events) to install and load on server start (map mods will not load unless also named as a \"Custom\" map under Custom Map Name). Requires Use Mods to be enabled",
+        "Keywords":"mods,list",
+        "FieldName":"modslist",
+        "InputType":"text",
+        "ParamFieldName":"modslist",
+        "DefaultValue":"",
+        "Placeholder":"900062,893657",
+        "EnumValues":{}
+    },
+    {
+        "DisplayName":"Enable Steam/PC Mods Only",
+        "Category":"ARK Server Settings",
+        "Description":"If set, crossplay mods will be disabled on the server",
+        "Keywords":"crossplay,pc,steam,mods,pconlymods",
+        "FieldName":"pconlymods",
+        "InputType":"checkbox",
+        "ParamFieldName":"pconlymods",
+        "DefaultValue":"",
+        "EnumValues":{
+            "False":"",
+            "True":"-pconlymods "
+        }
+    },
+    {
+        "DisplayName":"RCON/Server Admin Password",
+        "Category":"ARK Server Settings",
+        "Description":"See the Security and Privacy menu for configurable options for the server's RCON password. The RCON password is also used in the in-game console for players to access administrator commands (unless they are whitelisted)",
+        "Keywords":"rcon,password,serveradminpassword",
+        "FieldName":"RCONPassword",
+        "InputType":"hidden",
+        "ParamFieldName":"RCONPassword",
+        "IncludeInCommandLine":false,
+        "EnumValues":{}
+    },
+    {
+        "DisplayName":"Server Password",
+        "Category":"ARK Server Settings",
+        "Description":"Sets the password for players to join the server",
+        "Keywords":"server,password,serverpassword",
+        "FieldName":"ServerPassword",
+        "InputType":"password",
+        "ParamFieldName":"ServerSettings.ServerPassword",
+        "IncludeInCommandLine":false,
+        "DefaultValue":"",
+        "EnumValues":{}
+    },
+    {
+        "DisplayName":"Player Limit",
+        "Category":"ARK Server Settings",
+        "Description":"Sets the maximum number of players allowed on the server",
+        "Keywords":"max,players,limit,maxplayers",
+        "FieldName":"$MaxUsers",
+        "InputType":"number",
+        "MinValue":"1",
+        "ParamFieldName":"MaxPlayers",
+        "DefaultValue":"70",
+        "Placeholder":"70",
+        "Suffix":"players",
+        "EnumValues":{}  
+    },
+    {
+        "DisplayName":"MultiHome IP Binding",
+        "Category":"ARK Server Settings",
+        "Description":"If required, you can change the binding of the server and RCON by changing the 'Server IP Address' setting under Security and Privacy. NOTE: The IP must be reachable by AMP, otherwise AMP's console won't work",
+        "Keywords":"ip,binding,address,multihome",
+        "FieldName":"MultiHome",
+        "InputType":"hidden",
+        "ParamFieldName":"MultiHome",
+        "EnumValues":{}
+    },
+    {
+        "DisplayName":"Disable BattlEye",
+        "Category":"ARK Server Settings",
+        "Description":"If set, BattlEye will be disabled on the server",
+        "Keywords":"battleye,disable,nobattleye",
+        "FieldName":"BattlEye",
+        "InputType":"checkbox",
+        "ParamFieldName":"BattlEye",
+        "DefaultValue":"",
+        "EnumValues":{
+            "False":"",
+            "True":"-NoBattlEye "
+        }
+    },
+    {
+        "DisplayName":"Client Platform/Crossplay Support",
+        "Category":"ARK Server Settings",
+        "Description":"List (separated by +, such as: XSX+PS5) of the game client platforms supported by the server. 'PC' = Steam/PC, 'XSX' = Xbox, 'WINGDK' = Microsoft Store/PC, 'PS5' = PlayStation 5, 'ALL' = all platforms. Crossplay will be enabled if more than one platform is specified",
+        "Keywords":"crossplay,platform,pc,xbox,ps5,windows,serverplatform",
+        "FieldName":"ServerPlatform",
+        "InputType":"text",
+        "ParamFieldName":"ServerPlatform",
+        "DefaultValue":"ALL",
+        "Placeholder":"ALL",
+        "Required":true,
+        "EnumValues":{}
+    },
+    {
+        "DisplayName":"Banlist URL",
+        "Category":"ARK Server Settings",
+        "Description":"Sets a banlist to disallow access to the server to specified players (identified by Steam64 ID). Use either the global banlist of ARK, or a custom banlist URL",
+        "Keywords":"ban,banlist,blacklist,banlisturl",
+        "FieldName":"BanListURL",
+        "InputType":"text",
+        "ParamFieldName":"ServerSettings.BanListURL",
+        "DefaultValue":"http://arkdedicated.com/banlist.txt",
+        "Placeholder":"http://arkdedicated.com/banlist.txt",
+        "EnumValues":{}
+    },
+    {
+        "DisplayName":"Enable Admin Logging In Chat",
+        "Category":"ARK Server Settings",
+        "Description":"If set, all admin commands used will be logged to in-game chat",
+        "Keywords":"admin,log,chat,adminlogging",
+        "FieldName":"AdminLogging",
+        "InputType":"checkbox",
+        "ParamFieldName":"AdminLogging",
+        "IncludeInCommandLine":true,
+        "DefaultValue":"False",
+        "EnumValues":{
+            "False":"False",
+            "True":"True"
+        }
+    },
+    {
+        "DisplayName":"Kick Idle Players",
+        "Category":"ARK Server Settings",
+        "Description":"If set, characters that have not moved or interacted within the Kick Idle Players Period will be kicked from the server",
+        "Keywords":"kick,idle,players,enableidleplayerkick",
+        "FieldName":"EnableIdlePlayerKick",
+        "InputType":"checkbox",
+        "ParamFieldName":"EnableIdlePlayerKick",
+        "DefaultValue":"",
+        "EnumValues":{
+            "False":"",
+            "True":"-EnableIdlePlayerKick "
+        }
+    },
+    {
+        "DisplayName":"Kick Idle Players Period",
+        "Category":"ARK Server Settings",
+        "Description":"Sets the time period after which characters that have not moved or interacted will be kicked (if Kick Idle Players is enabled)",
+        "Keywords":"kick,idle,players,period,kickidleplayersperiod",
+        "FieldName":"KickIdlePlayersPeriod",
+        "InputType":"number",
+        "MinValue":"1",
+        "ParamFieldName":"KickIdlePlayersPeriod",
+        "IncludeInCommandLine":true,
+        "DefaultValue":"3600",
+        "Placeholder":"3600",
+        "Suffix":"seconds",
+        "EnumValues":{}
+    },
+    {
+        "DisplayName":"Auto Save Period",
+        "Category":"ARK Server Settings",
+        "Description":"Sets the interval for automatic saves. 0 = constant saving, 9000000 = effectively disabled",
+        "Keywords":"auto,save,period,minutes,autosaveperiodminutes",
+        "FieldName":"AutoSavePeriodMinutes",
+        "InputType":"number",
+        "MinValue":"0",
+        "MaxValue":"9000000",
+        "ParamFieldName":"AutoSavePeriodMinutes",
+        "IncludeInCommandLine":true,
+        "DefaultValue":"15.0",
+        "Placeholder":"15.0",
+        "Suffix":"minutes",
+        "EnumValues":{}
+    },
+    {
+        "DisplayName":"Disable Hang Detection",
+        "Category":"ARK Server Settings",
+        "Description":"If set, prevents the server from shutdown if its start-time takes more than 2700 seconds (45 minutes). Useful for servers with big saves or very slow machines",
+        "Keywords":"hang,detection,disabled,NoHangDetection",
+        "FieldName":"NoHangDetection",
+        "InputType":"checkbox",
+        "ParamFieldName":"NoHangDetection",
+        "DefaultValue":"",
+        "EnumValues":{
+            "False":"",
+            "True":"-NoHangDetection "
+        }
+    },
+    {
+        "DisplayName":"Language",
+        "Category":"ARK Server Settings",
+        "Description":"Sets the language of the server",
+        "Keywords":"language,culture",
+        "FieldName":"culture",
+        "InputType":"enum",
+        "ParamFieldName":"culture",
+        "DefaultValue":"en",
+        "EnumValues":{
+            "ca":"Català",
+            "cs":"čeština",
+            "da":"dansk",
+            "de":"Deutsch",
+            "en":"English (default)",
+            "es":"Español",
+            "eu":"euskara",
+            "fi":"suomi",
+            "fr":"Français",
+            "hu":"magyar",
+            "it":"Italiano",
+            "ja":"日本語",
+            "ka":"ქართული",
+            "ko":"한국어",
+            "nl":"Nederlands",
+            "pl":"Polski",
+            "pt_BR":"Português brasileiro",
+            "ru":"Русский",
+            "sv":"Svenska",
+            "th":"ไทย",
+            "tr":"Türkçe",
+            "zh":"中文",
+            "zh-Hans-CN":"使用者",
+            "zh-TW":"国语"
+        }
+    },
+    {
+        "DisplayName":"Cluster Directory Override",
+        "Category":"ARK Cluster Settings",
+        "Description":"Sets the path to a shared cluster directory for a server cluster. The cluster directory must be accessible to all cluster servers. If the server is in Docker, the directory must be mounted in the container",
+        "Keywords":"cluster,directory,override,clusterdiroverride",
+        "FieldName":"ClusterDirOverride",
+        "InputType":"text",
+        "IsFlagArgument":false,
+        "ParamFieldName":"ClusterDirOverride",
+        "IncludeInCommandLine":false,
+        "DefaultValue":"",
+        "EnumValues":{}
+    },
+    {
+        "DisplayName":"Cluster ID",
+        "Category":"ARK Cluster Settings",
+        "Description":"Sets the cluster ID for a server cluster. The cluster ID must be the same on all servers in the cluster",
+        "Keywords":"cluster,id,clusterid",
+        "FieldName":"clusterID",
+        "InputType":"text",
+        "IsFlagArgument":false,
+        "ParamFieldName":"clusterID",
+        "IncludeInCommandLine":false,
+        "DefaultValue":"",
+        "EnumValues":{}
+    },
+    {
+        "DisplayName":"Prevent Character Download",
+        "Category":"ARK Cluster Settings",
+        "Description":"If set, prevents the download of characters from a cluster to the server",
+        "Keywords":"prevent,download,tribute,characters,data,transfer,cluster,notributedownloads",
+        "FieldName":"noTributeDownloads",
+        "InputType":"checkbox",
+        "IsFlagArgument":false,
+        "ParamFieldName":"noTributeDownloads",
+        "IncludeInCommandLine":true,
+        "DefaultValue":"False",
+        "EnumValues":{
+            "False":"False",
+            "True":"True"
+        }
+    },
+    {
+        "DisplayName":"Prevent Survivor Download",
+        "Category":"ARK Cluster Settings",
+        "Description":"If set, prevents the download of survivors from a cluster to the server",
+        "Keywords":"prevent,download,survivor,data,transfer,cluster,preventdownloadsurvivors",
+        "FieldName":"PreventDownloadSurvivors",
+        "InputType":"checkbox",
+        "IsFlagArgument":false,
+        "ParamFieldName":"PreventDownloadSurvivors",
+        "IncludeInCommandLine":true,
+        "DefaultValue":"False",
+        "EnumValues":{
+            "False":"False",
+            "True":"True"
+        }
+    },
+    {
+        "DisplayName":"Prevent Item Download",
+        "Category":"ARK Cluster Settings",
+        "Description":"If set, prevents the download of items from a cluster to the server",
+        "Keywords":"prevent,download,items,data,transfer,cluster,preventdownloaditems",
+        "FieldName":"PreventDownloadItems",
+        "InputType":"checkbox",
+        "IsFlagArgument":false,
+        "ParamFieldName":"PreventDownloadItems",
+        "IncludeInCommandLine":true,
+        "DefaultValue":"False",
+        "EnumValues":{
+            "False":"False",
+            "True":"True"
+        }
+    },
+    {
+        "DisplayName":"Prevent Creature Download",
+        "Category":"ARK Cluster Settings",
+        "Description":"If set, prevents the download of tamed creatures from a cluster to the server",
+        "Keywords":"prevent,download,creatures,data,transfer,cluster,preventdownloaddinos",
+        "FieldName":"PreventDownloadDinos",
+        "InputType":"checkbox",
+        "IsFlagArgument":false,
+        "ParamFieldName":"PreventDownloadDinos",
+        "IncludeInCommandLine":true,
+        "DefaultValue":"False",
+        "EnumValues":{
+            "False":"False",
+            "True":"True"
+        }
+    },
+    {
+        "DisplayName":"Prevent Survivor Upload",
+        "Category":"ARK Cluster Settings",
+        "Description":"If set, prevents the upload of survivors from the server to a cluster",
+        "Keywords":"prevent,upload,survivor,data,transfer,cluster,preventuploadsurvivors",
+        "FieldName":"PreventUploadSurvivors",
+        "InputType":"checkbox",
+        "IsFlagArgument":false,
+        "ParamFieldName":"PreventUploadSurvivors",
+        "IncludeInCommandLine":true,
+        "DefaultValue":"False",
+        "EnumValues":{
+            "False":"False",
+            "True":"True"
+        }
+    },
+    {
+        "DisplayName":"Prevent Item Upload",
+        "Category":"ARK Cluster Settings",
+        "Description":"If set, prevents the upload of items from the server to a cluster",
+        "Keywords":"prevent,upload,items,data,transfer,cluster,preventuploaditems",
+        "FieldName":"PreventUploadItems",
+        "InputType":"checkbox",
+        "IsFlagArgument":false,
+        "ParamFieldName":"PreventUploadItems",
+        "IncludeInCommandLine":true,
+        "DefaultValue":"False",
+        "EnumValues":{
+            "False":"False",
+            "True":"True"
+        }
+    },
+    {
+        "DisplayName":"Prevent Creature Upload",
+        "Category":"ARK Cluster Settings",
+        "Description":"If set, prevents the upload of tamed creatures from the server to a cluster",
+        "Keywords":"prevent,upload,creatures,data,transfer,cluster,preventuploaddinos",
+        "FieldName":"PreventUploadDinos",
+        "InputType":"checkbox",
+        "IsFlagArgument":false,
+        "ParamFieldName":"PreventUploadDinos",
+        "IncludeInCommandLine":true,
+        "DefaultValue":"False",
+        "EnumValues":{
+            "False":"False",
+            "True":"True"
+        }
+    },
+    {
+        "DisplayName":"Download Backup Exclusion Files",
+        "Category":"SteamCMD and Updates",
+        "Description":"If enabled, default backup exclusion configuration files are downloaded when the server is updated, to save space on AMP backups. If disabled, manually delete any .backupExclude files in the server base directory and in the ShooterGame directory to prevent backup exclusions",
+        "Keywords":"backup,exclude,exclusion,file",
+        "FieldName":"backupExclude",
+        "InputType":"checkbox",
+        "ParamFieldName":"backupExclude",
+        "IncludeInCommandLine":false,
+        "DefaultValue":"true",
+        "EnumValues":{
+            "False":"false",
+            "True":"true"
+        }
+    }
+]
